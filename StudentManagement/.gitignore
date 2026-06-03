@@ -1,0 +1,149 @@
+# Visual Studio / .NET gitignore tailored for a .NET Framework 4.7.2 Visual Studio solution
+# https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+
+# Build results
+[Bb]in/
+[Oo]bj/
+Generated_Code/
+
+# Visual Studio cache/options folder
+.vs/
+
+# Team Foundation
+$tf/
+
+# NuGet
+*.nupkg
+# The packages folder can be ignored because of PackageReference restore
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+
+# Microsoft Azure Web App publish settings
+.publishsettings
+*.Publish.xml
+*.pubxml
+*.publishproj
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Build logs
+*.log
+
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
+# IIS Express
+IISExpress/
+
+# User-specific files
+*.suo
+*.user
+*.userprefs
+
+# Rider
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+
+# ReSharper
+_ReSharper*/
+*.ReSharper*/
+*.DotSettings.user
+
+# StyleCop
+StyleCopReport.xml
+
+# JustCode
+.justcode
+
+# DotCover
+*.dotCover
+
+# NCrunch
+*.ncrunch*
+_nCrunch_*
+
+# Coverage files
+*.coverage
+coverage*/
+
+# Publish output folders
+publish/
+*/bin/Release/
+*/bin/Debug/
+
+# Web specific
+App_Data/
+ClientBin/
+*.publishsettings
+*.deploy
+node_modules/
+bower_components/
+
+# Generated files
+*.Generated.cs
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.class
+*.dll
+*.exe
+
+# Rider and JetBrains IDEs caches
+.idea/
+*.iml
+out/
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Lock files
+*.lock.json
+
+# Other
+*.vspscc
+*.vssscc
+
+# If you want to ignore the ASPX designer/compiled outputs, uncomment these (not recommended if you track source):
+# *.aspx.cs
+# *.aspx.designer.cs
+
+# End of file
