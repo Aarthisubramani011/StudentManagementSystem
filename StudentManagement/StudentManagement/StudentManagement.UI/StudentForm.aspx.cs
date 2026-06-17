@@ -71,8 +71,6 @@ namespace StudentManagement.StudentManagement.UI
         }
 
 
-
-
         protected async void btn_submit(object sender, EventArgs e)
         {
             Student student = new Student()

@@ -10,7 +10,7 @@ namespace StudentManagement.StudentManagement.Data
 {
     public class StudentData
     {
-        private static string cs = "Data Source=(localdb)\\MSSQLLocalDB;" + "Initial Catalog=StudentDataBase;" + "Integrated Security=True;";
+        private static string cs = "Data Source=.;Initial Catalog = StudentDatabase; User ID = sa; Password=msindia@123;Encrypt=False";
 
         public DataTable DisplayTable()
         {
