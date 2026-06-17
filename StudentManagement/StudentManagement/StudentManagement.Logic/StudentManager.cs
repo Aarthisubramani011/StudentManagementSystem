@@ -47,5 +47,11 @@ namespace StudentManagement.StudentManagement.Logic
             await _studentData.AddAsync(student);
             //await _channel.Writer.WriteAsync(student);
         }
+
+        public async Task<string> UpdateStudentAsync(Student student)
+        {
+            await _studentData.UpdateStudentDataAsync(student);
+            return "Student Updated Successfully";
+        }
     }
 }

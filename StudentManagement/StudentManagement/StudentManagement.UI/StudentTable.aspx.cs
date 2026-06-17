@@ -37,7 +37,8 @@ namespace StudentManagement.StudentManagement.UI
         {
             Button btn = (Button)sender;
             int id = Convert.ToInt32(btn.CommandArgument);
-            Response.Redirect("StudentForm.aspx?Rollno=" + id);
+
+            Response.Redirect("StudentForm.aspx?Rollno=" + id + "&event=edit");
             BindGrid();
         }
 

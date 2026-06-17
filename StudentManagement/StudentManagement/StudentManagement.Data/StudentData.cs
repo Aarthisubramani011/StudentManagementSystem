@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentManagement.StudentManagement.Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,7 +11,7 @@ namespace StudentManagement.StudentManagement.Data
 {
     public class StudentData
     {
-        private static string cs = "Data Source=.;Initial Catalog = StudentDatabase; User ID = sa; Password=msindia@123;Encrypt=False";
+        private static string cs = "Data Source=.;Initial Catalog=StudentDatabase2;User ID=sa;Password=kala@2005;Encrypt=False";
 
         public DataTable DisplayTable()
         {
@@ -104,6 +105,44 @@ namespace StudentManagement.StudentManagement.Data
 
                     await cmd.ExecuteNonQueryAsync();
                 }
+            }
+        }
+
+        public async Task UpdateStudentDataAsync(Student student)
+        {
+            
+
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                await con.OpenAsync();
+                string query = @"
+                                UPDATE StudentDetails
+                                SET 
+                                    Name = @Name,
+                                    Department = @Department,
+                                    Year = @Year,
+                                    Gender = @Gender,
+                                    DOB = @DOB,
+                                    Country = @Country,
+                                    Address = @Address
+                                WHERE Rollno = @Rollno";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Name", student.Name);
+                    cmd.Parameters.AddWithValue("@Department", student.Department);
+                    cmd.Parameters.AddWithValue("@Year", student.Year);
+                    cmd.Parameters.AddWithValue("@Gender", student.Gender);
+                    cmd.Parameters.AddWithValue("@DOB", student.DOB);
+                    cmd.Parameters.AddWithValue("@Country", student.Country);
+                    cmd.Parameters.AddWithValue("@Address", student.Address);
+                    cmd.Parameters.AddWithValue("@Rollno", student.Rollno);
+
+                    await cmd.ExecuteNonQueryAsync();
+                } 
+
+                
+
             }
         }
     }

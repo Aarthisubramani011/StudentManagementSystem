@@ -18,13 +18,17 @@ namespace StudentManagement.StudentManagement.UI
             if (!IsPostBack)
             {
                 string rollno = Request.QueryString["Rollno"];
+                string eventType = Request.QueryString["event"];
                 int id;
 
 
                 if (!string.IsNullOrEmpty(rollno) && int.TryParse(rollno, out id))
                 {
-                    UpdateStudentData(id);
-                    TextBox2.ReadOnly = true;
+                    if(eventType == "edit")
+                    {
+                        UpdateStudentData(id);
+                        TextBox2.ReadOnly = true;
+                    }
                 }
 
             }
@@ -85,27 +89,40 @@ namespace StudentManagement.StudentManagement.UI
                 Address = CommentsTextBox.Text
             };
 
+            string eventType = Request.QueryString["event"];
 
-            //StudentManagerChannel manager = new StudentManagerChannel();
-            //await manager.AddStudentAsync(student);
+            string result;
 
-
-
-            string result = await _manager.SaveStudentAsync(student);
-            if (result.Contains("Duplicate"))
+            if (eventType == "edit")
             {
-
-                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", $"alert('{result}');", true);
+                // Update existing student
+                result = await _manager.UpdateStudentAsync(student);
             }
             else
             {
-
-                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage",
-                    $"alert('{result}'); window.location='StudentTable.aspx';", true);
+                // Add new student
+                result = await _manager.SaveStudentAsync(student);
             }
 
-            //Response.Redirect("StudentDatatable.aspx", false);
-            //Context.ApplicationInstance.CompleteRequest();
+
+            if (result.Contains("Duplicate"))
+            {
+                ScriptManager.RegisterStartupScript(
+                    this,
+                    GetType(),
+                    "alertMessage",
+                    $"alert('{result}');",
+                    true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(
+                    this,
+                    GetType(),
+                    "alertMessage",
+                    $"alert('{result}'); window.location='StudentTable.aspx';",
+                    true);
+            }
         }
     }
 }
