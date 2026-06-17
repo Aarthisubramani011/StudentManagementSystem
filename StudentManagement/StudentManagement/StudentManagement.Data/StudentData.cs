@@ -60,7 +60,23 @@ namespace StudentManagement.StudentManagement.Data
 
         public async Task<int> CheckStudentExistsAsync(int rollno) 
         {
-            return 0;
+            int count = 0;
+
+            string query = "SELECT COUNT(1) FROM StudentDetails WHERE Rollno = @Rollno";
+
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Rollno", rollno);
+
+                    await con.OpenAsync();
+
+                    count = (int)await cmd.ExecuteScalarAsync();
+                }
+            }
+
+            return count;
         }
 
         public async Task AddAsync(Model.Student student)
